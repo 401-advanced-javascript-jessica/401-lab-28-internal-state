@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Form from './components/Form/form';
+import Text from './components/Text/text';
 
 import './styles.css';
 
@@ -13,34 +15,12 @@ class App extends React.Component {
         }
     }
 
-    handleChange = event => {
-        this.setState({
-            name: event.target.value,
-        })
-    };
 
-    handleSubmit = event => {
-        event.preventDefault();
-        this.setState(previousState => ({
-            count: previousState.count + 1,
-            name: previousState.name,
-        }));
-    };
   render() {
     return (
         <React.Fragment>
-      <form onSubmit={this.handleSubmit}>
-          <input
-              type="text"
-              value={this.state.name}
-              onChange={this.handleChange}
-          />
-          <button type="submit"> Update Name</button>
-      </form>
-        <div>
-          <div>Name: {this.state.name} </div>
-          <div># of Updates: {this.state.count} </div>
-        </div>
+      <Form name={this.state.name} count={this.state.count}/>
+      <Text name={this.state.name} count={this.state.count}/>
       </React.Fragment>
     );
   }
